@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  keycloak-mysql:
+    image: mysql:8.0.39
+    container_name: keycloak-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak-db
+    ports:
+      - "3310:3306"
+    volumes:
+      - keycloak-mysql-data:/var/lib/mysql
+  keycloak-phpadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: keycloak-phpadmin
+    environment:
+      PMA_HOST: keycloak-mysql
+      PMA_PORT: 3306
+    ports:
+      - "8083:80"
+
+
+volumes:
+  keycloak-mysql-data:

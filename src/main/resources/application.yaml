@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: keycloak-learning
+
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3310/keycloak-db
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8082/realms/nemisolv
+#          jwk-set-uri: http://localhost:8081/realms/nemisolv/protocol/openid-connect/certs
